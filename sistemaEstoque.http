@@ -1,6 +1,0 @@
-@sistemaEstoque_HostAddress = http://localhost:5075
-
-GET {{sistemaEstoque_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
