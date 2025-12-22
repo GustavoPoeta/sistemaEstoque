@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaEstoque.API.Contracts;
 using SistemaEstoque.Application.UseCases;
@@ -15,8 +16,9 @@ public sealed class UserController : ControllerBase
         _useCase = useCase;
     }
 
+    [Authorize(Policy = "AdminKeyRequirement")]
     [HttpPost]
-    [Route("add")]
+    [Route("add")]    
     public async Task<IActionResult> Add([FromBody] CreateUserRequest request)
     {
         var userId = await _useCase.ExecuteAsync(

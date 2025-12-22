@@ -44,5 +44,10 @@ public sealed class UserConfiguration : IEntityTypeConfiguration<User>
             .HasColumnName("senha")
             .HasMaxLength(255)
             .IsRequired();
+            
+        builder.HasOne(u => u.AdminKey)
+            .WithOne()
+            .HasForeignKey<AdminKey>(k => k.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
